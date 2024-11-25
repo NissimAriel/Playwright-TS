@@ -33,7 +33,7 @@ export default defineConfig({
 
     screenshot: 'on',
 
-    video: 'on',
+    video: 'on-first-retry',
 
     headless: process.env.CI ? true : false,
   },
