@@ -32,13 +32,30 @@ jobs:
           path: playwright-report/
           retention-days: 30
       
+      name: Download and Email Artifact
+      on:
+        workflow_dispatch:
+
+      jobs:
+        download-and-email:
+          runs-on: ubuntu-latest
+          steps:
+            - name: List available artifacts
+              uses: actions/github-script@v7
+              with:
+                script: |
+                  const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+                    owner: context.repo.owner,
+                    repo: context.repo.repo,
+                    run_id: context.runId
+                  })
+                  console.log(artifacts.data.artifacts)
+      
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
           name: playwright-report
-      
-      - name: Unzip Report
-        run: unzip playwright-report.zip
+          path: ./downloaded-artifact
 
       
       - name: Send Email with Report
