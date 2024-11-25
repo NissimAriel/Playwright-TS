@@ -31,3 +31,25 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      
+      - name: Generate HTML report
+        run: npx playwright show-report
+      
+      - name: Convert HTML report to PDF
+        run: |
+          npm install -g capture-website-cli
+          mkdir -p reports
+          capture-website reports/report.pdf --full-page --format=pdf playwright-report/index.html
+      
+      - name: Send Email with Report
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: na260438@gmail.com
+          password: ufnx rfxm bkqx zngz
+          subject: Playwright Test Report
+          body: Attached is the Playwright test report
+          to: saaravistris@gmail.com
+          from: na260438@gmail.com
+          attachments: reports/report.pdf
