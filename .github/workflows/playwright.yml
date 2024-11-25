@@ -32,18 +32,13 @@ jobs:
           path: playwright-report/
           retention-days: 30
       
-      - name: Verify report directory
-        run: |
-          ls -l
-          ls -l playwright-report
-
-      - name: Generate PDF
-        run: |
-          if [ ! -d "playwright-report" ]; then
-            echo "Playwright report directory not found"
-            exit 1
-            fi
-          npx playwright show-report
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: playwright-report
+      
+      - name: Unzip Report
+        run: unzip playwright-report.zip
 
       
       - name: Send Email with Report
