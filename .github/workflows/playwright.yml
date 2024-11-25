@@ -32,17 +32,19 @@ jobs:
           path: playwright-report/
           retention-days: 30
       
-      - name: Generate HTML report
+      - name: Verify report directory
         run: |
-          mkdir -p reports
-          npx playwright test --reporter=html
-          mv playwright-report reports/
-      
-      - name: Convert HTML report to PDF
+          ls -l
+          ls -l playwright-report
+
+      - name: Generate PDF
         run: |
-          npm install -g capture-website-cli
-          mkdir -p reports
-          capture-website reports/report.pdf --full-page --format=pdf playwright-report/index.html
+          if [ ! -d "playwright-report" ]; then
+            echo "Playwright report directory not found"
+            exit 1
+            fi
+          npx playwright show-report
+
       
       - name: Send Email with Report
         uses: dawidd6/action-send-mail@v3
