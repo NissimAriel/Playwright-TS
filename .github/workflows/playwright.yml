@@ -33,7 +33,10 @@ jobs:
           retention-days: 30
       
       - name: Generate HTML report
-        run: npx playwright show-report
+        run: |
+          mkdir -p reports
+          npx playwright test --reporter=html
+          mv playwright-report reports/
       
       - name: Convert HTML report to PDF
         run: |
