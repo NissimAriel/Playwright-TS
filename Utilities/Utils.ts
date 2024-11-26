@@ -1,16 +1,14 @@
-export const Utils = {
+export class Utils {
 
-    User_Details: {
-        BaseUrl: "https://www.saucedemo.com/",
-        LoggedUrl: "https://www.saucedemo.com/inventory.html",
-        Username: "standard_user",
-        Password: "secret_sauce",
-        First_Name: "Nissim",
-        Last_Name: "Ariel",
-        Zip_Code: "3708023"
-    },
-
-    Item_Name: "Sauce Labs Backpack",
+    
+        public static readonly BASE_URL = "https://www.saucedemo.com/";
+        public static readonly LOGGED_URL = "https://www.saucedemo.com/inventory.html";
+        public static readonly STANDART_USERNAME = "standard_user";
+        public static readonly CORRECT_PASSWORD = "secret_sauce";
+        public static readonly FIRST_NAME = "Nissim";
+        public static readonly LAST_NAME = "Ariel";
+        public static readonly ZIP_CODE = "3708023";
+        public static readonly ITEM_NAME = "Sauce Labs Backpack";
 
 
 

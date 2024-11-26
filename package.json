@@ -1,5 +1,5 @@
 {
-  "name": "pr-ts",
+  "name": "playwright-ts",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {},
@@ -9,6 +9,9 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.49.0",
-    "@types/node": "^22.9.3"
+    "@types/node": "^22.9.4"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
   }
 }
