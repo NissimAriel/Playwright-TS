@@ -1,14 +1,13 @@
-import {test, expect, Locator, Page} from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 
-export class Checkout{
+export class Checkout {
 
-    page: Page;
-    firstName: Locator;
-    lastName: Locator;
-    zip: Locator;
-    contBtn: Locator;
+    private firstName: Locator;
+    private lastName: Locator;
+    private zip: Locator;
+    private contBtn: Locator;
 
-    constructor(page: Page) {
+    constructor(protected page: Page) {
 
         this.page = page;
         this.firstName = page.locator("#first-name");

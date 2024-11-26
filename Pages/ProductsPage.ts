@@ -1,12 +1,12 @@
-import {test, expect, Locator, Page} from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 
 
-export class Inven {
+export class Products {
 
-    page: Page;
-    itemPicked: Locator;
+    
+    private itemPicked: Locator;
 
-    constructor(page: Page) {
+    constructor(protected page: Page) {
         this.page = page;
         this.itemPicked = page.locator("#item_4_title_link");
 

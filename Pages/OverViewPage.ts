@@ -1,13 +1,13 @@
-import {test, expect, Locator, Page} from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 
 export class OverView {
         
-    page: Page;
-    itemTitle: Locator;
-    finishBtn: Locator;
-    success: Locator;
+    
+    readonly itemTitle: Locator;
+    private finishBtn: Locator;
+    readonly success: Locator;
 
-    constructor(page: Page) {
+    constructor(protected page: Page) {
         this.page = page;
         this.itemTitle = page.locator(".inventory_item_name");
         this.finishBtn = page.locator("#finish");

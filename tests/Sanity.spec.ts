@@ -1,7 +1,7 @@
 // @ts-check
-import {test, expect} from '@playwright/test';
-import {Utils} from '../Utilities/Utils';
-import {BasePage} from '../Pages/BasePage'
+import { test, expect } from '@playwright/test';
+import { Utils } from '../Utilities/Utils';
+import { BasePage } from '../Pages/BasePage'
 
 test.describe("Tests", () => {
   test.beforeEach(async ({ page }) => {
@@ -27,15 +27,15 @@ test.describe("Tests", () => {
 
   test("Full Flow", async ({ page }) => {
     const base = new BasePage(page);
-    const inven = base.getInvenv();
+    const products = base.getProducts();
     const item = base.getItem();
     const sum = base.getSum();
     const checkout = base.getCheckOut();
     const overview = base.getOverView();
-    await inven.choseItem();
+    await products.choseItem();
     await item.addItem();
     await item.goToBasket();
-    await expect(sum.itemTitle).toContainText(Utils.ITEM_NAME);
+    await expect(sum.itemTitleSum).toContainText(Utils.ITEM_NAME);
     await sum.goToChckOut();
     await checkout.personalDetails(
       Utils.FIRST_NAME,

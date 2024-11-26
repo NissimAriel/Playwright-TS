@@ -1,11 +1,12 @@
-import {test, expect, Locator, Page} from '@playwright/test';
-import {Utils} from '../Utilities/Utils';
+import { test, expect, Locator, Page } from '@playwright/test';
+import { Utils } from '../Utilities/Utils';
+
 export class Login {
 
     //page: Page;
-    usernameField: Locator;
-    passwordField: Locator;
-    loginBtn: Locator;
+    private usernameField: Locator;
+    private passwordField: Locator;
+    private loginBtn: Locator;
         
     constructor(protected page: Page) {
         //this.page = page;

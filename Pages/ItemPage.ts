@@ -1,12 +1,12 @@
-import {test, expect, Locator, Page} from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 
 export class Item {
 
-    page: Page;
-    addCartBtn: Locator;
-    basket: Locator;
+    
+    private addCartBtn: Locator;
+    private basket: Locator;
 
-    constructor(page: Page){
+    constructor(protected page: Page){
         this.page = page;
         this.addCartBtn = page.locator(".btn.btn_primary.btn_small.btn_inventory");
         this.basket = page.locator(".shopping_cart_link");

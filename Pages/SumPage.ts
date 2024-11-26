@@ -1,14 +1,13 @@
-import {test, expect, Locator, Page} from '@playwright/test';
+import { test, expect, Locator, Page } from '@playwright/test';
 export class Sum {
 
-    page: Page;
-    checkout: Locator;
-    itemTitle: Locator;
+    private checkout: Locator;
+    readonly itemTitleSum: Locator;
 
-    constructor(page: Page){
+    constructor(protected page: Page){
         this.page = page;
         this.checkout = page.locator("#checkout")
-        this.itemTitle = page.locator(".inventory_item_name");
+        this.itemTitleSum = page.locator(".inventory_item_name");
     }
 
     async goToChckOut(){
