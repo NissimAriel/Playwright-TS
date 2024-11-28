@@ -1,18 +1,26 @@
 import { test, expect, Locator, Page } from '@playwright/test';
+import { Base } from './BasePage';
 
-export class OverView {
+export class OverView extends Base {
         
     
-    readonly itemTitle: Locator;
+    private itemTitle: Locator;
     private finishBtn: Locator;
-    readonly success: Locator;
+    
 
     constructor(protected page: Page) {
+        super(page);
         this.page = page;
         this.itemTitle = page.locator(".inventory_item_name");
         this.finishBtn = page.locator("#finish");
-        this.success = page.locator(".complete-header");
+        
     }
+
+
+    async validateItemTitle(title: string){
+        //await expect(this.itemTitle).toContainText(title);
+        await this.validateElementText(this.itemTitle, title)
+    }    
 
     async goFinish(){
         await this.finishBtn.click();

@@ -1,14 +1,39 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
-import { Utils } from '../Utilities/Utils';
-import { BasePage } from '../Pages/BasePage'
+import { UserDetails } from '../Utilities/UserDetails';
+import { Base } from '../Pages/BasePage'
+import {Products} from '../Pages/ProductsPage'
+import {Item} from '../Pages/ItemPage'
+import {Sum} from '../Pages/SumPage'
+import {Login} from '../Pages/LoginPage'
+import { Checkout } from '../Pages/ChkOutPage';
+import { OverView } from '../Pages/OverViewPage';
+import { Complete } from '../Pages/CompletePage';
+
 
 test.describe("Tests", () => {
-  test.beforeEach(async ({ page }) => {
+  
+  let base: Base;
+  let login: Login;
+  let products: Products;
+  let item: Item;
+  let sum: Sum;
+  let checkout: Checkout;
+  let overview: OverView;
+  let complete: Complete;
+
+  test.beforeEach(async ({page}) => {
     test.step("more details in the repport", async () => {
-      const base = new BasePage(page);
-      const login = base.getLogin();
-      await page.goto(Utils.BASE_URL);
+       
+       login = new Login(page);
+       products = new Products(page);
+       item = new Item(page);
+       sum = new Sum(page);
+       checkout = new Checkout(page);
+       overview = new OverView(page);
+       complete = new Complete(page);
+      
+      await page.goto(UserDetails.BASE_URL);
       await login.performLogin();
     });
   });
@@ -21,29 +46,24 @@ test.describe("Tests", () => {
   });
 
   test("Validate Login Test", async ({ page }) => {
-    await page.waitForURL(Utils.LOGGED_URL);
-    expect(page).toHaveURL(Utils.LOGGED_URL);
+    await products.validatePageUrl(UserDetails.LOGGED_URL);
   });
 
   test("Full Flow", async ({ page }) => {
-    const base = new BasePage(page);
-    const products = base.getProducts();
-    const item = base.getItem();
-    const sum = base.getSum();
-    const checkout = base.getCheckOut();
-    const overview = base.getOverView();
+    
+    await products.validatePageTitle('Products');
     await products.choseItem();
     await item.addItem();
     await item.goToBasket();
-    await expect(sum.itemTitleSum).toContainText(Utils.ITEM_NAME);
+    await sum.validateItemTitleSum();
     await sum.goToChckOut();
     await checkout.personalDetails(
-      Utils.FIRST_NAME,
-      Utils.LAST_NAME,
-      Utils.ZIP_CODE
+      UserDetails.FIRST_NAME,
+      UserDetails.LAST_NAME,
+      UserDetails.ZIP_CODE
     );
-    await expect(overview.itemTitle).toContainText(Utils.ITEM_NAME);
+    await overview.validateItemTitle(UserDetails.ITEM_NAME);
     await overview.goFinish();
-    await expect(overview.success).toContainText("Thank you for your order!");
+    await complete.validatSuccessMessage("Thank you for your order!");
   });
 });

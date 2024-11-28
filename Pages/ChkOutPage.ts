@@ -1,6 +1,7 @@
 import { test, expect, Locator, Page } from '@playwright/test';
+import { Base } from './BasePage';
 
-export class Checkout {
+export class Checkout extends Base {
 
     private firstName: Locator;
     private lastName: Locator;
@@ -8,7 +9,8 @@ export class Checkout {
     private contBtn: Locator;
 
     constructor(protected page: Page) {
-
+        
+        super(page);
         this.page = page;
         this.firstName = page.locator("#first-name");
         this.lastName = page.locator("#last-name")
