@@ -1,5 +1,5 @@
 // @ts-check
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { UserDetails } from '../Utilities/UserDetails';
 import { Base } from '../Pages/BasePage'
 import {Products} from '../Pages/ProductsPage'

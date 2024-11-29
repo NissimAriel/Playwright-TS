@@ -1,7 +1,7 @@
 import { test, expect, Locator, Page } from '@playwright/test';
-import { UserDetails } from '../Utilities/UserDetails';
+import { UserCredentials } from '../Utilities/UserCredentials';
 import { ErrorMessages } from '../Utilities/ErrorMessages';
-//import { BasePage } from '../Pages/BasePage'
+import { UserDetails } from '../Utilities/UserDetails';
 import { Login } from '../Pages/LoginPage';
 
 test.describe("Tests", () => {
@@ -25,17 +25,17 @@ test.describe("Tests", () => {
     });
 
     test("Login with locked_out_user", async ({ page }) => {
-        await login.performLogin(UserDetails.LOCKED_OUT_USER, UserDetails.CORRECT_PASSWORD);
+        await login.performLogin(UserCredentials.LOCKED_OUT_USER, UserCredentials.CORRECT_PASSWORD);
         await login.validateErrorMessage(ErrorMessages.LOGIN_WITH_LOCKED_USER);
     });
 
     test("Login with incorrect username", async ({ page }) => {
-        await login.performLogin(UserDetails.INCORRECT_USERNAME, UserDetails.CORRECT_PASSWORD);
+        await login.performLogin(UserCredentials.INCORRECT_USERNAME, UserCredentials.CORRECT_PASSWORD);
         await login.validateErrorMessage(ErrorMessages.LOGIN_WITH_INCORRECT_CREDENTIALS);
     });
 
     test("Login with incorrect password", async ({ page }) => {
-        await login.performLogin(UserDetails.STANDART_USER, UserDetails.INCORRECT_PASWORD);
+        await login.performLogin(UserCredentials.STANDART_USER, UserCredentials.INCORRECT_PASWORD);
         await login.validateErrorMessage(ErrorMessages.LOGIN_WITH_INCORRECT_CREDENTIALS);
     });
 

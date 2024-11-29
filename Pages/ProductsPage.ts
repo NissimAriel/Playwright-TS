@@ -1,5 +1,6 @@
 import { test, expect, Locator, Page } from '@playwright/test';
-import { UserDetails } from '../Utilities/UserDetails';
+import { UserCredentials } from '../Utilities/UserCredentials';
+import { UserDetails } from '../Utilities/UserDetails'
 import { Base } from './BasePage';
 
 
@@ -16,7 +17,7 @@ export class Products extends Base {
     }
 
     async validateLoggedUrl(url: string){
-        // await this.page.waitForURL(UserDetails.LOGGED_URL);
+        // await this.page.waitForURL(UserCredentials.LOGGED_URL);
         // await expect(this.page).toHaveURL(url);
         await this.validatePageUrl(UserDetails.LOGGED_URL);
     }

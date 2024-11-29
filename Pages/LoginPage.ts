@@ -1,6 +1,6 @@
 import { test, expect, Locator, Page } from '@playwright/test';
 import { Base } from './BasePage';
-import { UserDetails } from '../Utilities/UserDetails';
+import { UserCredentials } from '../Utilities/UserCredentials';
 import { ErrorMessages } from '../Utilities/ErrorMessages';
 
 export class Login extends Base {
@@ -18,7 +18,7 @@ export class Login extends Base {
         this.errorMessage = page.locator('[data-test = "error"]');
     }
 
-    async performLogin(userName: string = UserDetails.STANDART_USER, password: string = UserDetails.CORRECT_PASSWORD){
+    async performLogin(userName: string = UserCredentials.STANDART_USER, password: string = UserCredentials.CORRECT_PASSWORD){
         await this.usernameField.fill(userName);
         await this.passwordField.fill(password);
         await this.loginBtn.click();

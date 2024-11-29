@@ -1,10 +1,9 @@
 import { test, expect, Locator, Page } from '@playwright/test';
 import { UserDetails } from '../Utilities/UserDetails';
-import { ErrorMessages } from '../Utilities/ErrorMessages';
-//import { BasePage } from '../Pages/BasePage'
+import { UserCredentials } from '../Utilities/UserCredentials';
 import { Login } from '../Pages/LoginPage';
 import { Products } from '../Pages/ProductsPage';
-import { TIMEOUT } from 'dns';
+
 
 test.describe("Tests", () => {
     
@@ -29,17 +28,17 @@ test.describe("Tests", () => {
     });
 
     test("Login with standard_user", async ({ page }) => {
-        await login.performLogin(UserDetails.STANDART_USER, UserDetails.CORRECT_PASSWORD);
+        await login.performLogin(UserCredentials.STANDART_USER, UserCredentials.CORRECT_PASSWORD);
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
 
     test("Login with problem_user", async ({ page }) => {
-        await login.performLogin(UserDetails.PROBLEM_USER, UserDetails.CORRECT_PASSWORD);
+        await login.performLogin(UserCredentials.PROBLEM_USER, UserCredentials.CORRECT_PASSWORD);
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
 
     test("Login with performance_glitch_user", async ({ page }) => {
-        await login.performLogin(UserDetails.PERFORMANCE_GLITCH_USER, UserDetails.CORRECT_PASSWORD);
+        await login.performLogin(UserCredentials.PERFORMANCE_GLITCH_USER, UserCredentials.CORRECT_PASSWORD); 
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
 
