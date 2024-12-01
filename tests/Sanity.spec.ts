@@ -2,10 +2,10 @@
 import { test } from '@playwright/test';
 import { UserDetails } from '../Utilities/UserDetails';
 import { Base } from '../Pages/BasePage'
-import {Products} from '../Pages/ProductsPage'
-import {Item} from '../Pages/ItemPage'
-import {Sum} from '../Pages/SumPage'
-import {Login} from '../Pages/LoginPage'
+import { Products } from '../Pages/ProductsPage'
+import { Item } from '../Pages/ItemPage'
+import { Sum}  from '../Pages/SumPage'
+import { Login } from '../Pages/LoginPage'
 import { Checkout } from '../Pages/ChkOutPage';
 import { OverView } from '../Pages/OverViewPage';
 import { Complete } from '../Pages/CompletePage';

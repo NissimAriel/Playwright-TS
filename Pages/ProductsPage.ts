@@ -1,5 +1,4 @@
 import { test, expect, Locator, Page } from '@playwright/test';
-import { UserCredentials } from '../Utilities/UserCredentials';
 import { UserDetails } from '../Utilities/UserDetails'
 import { Base } from './BasePage';
 

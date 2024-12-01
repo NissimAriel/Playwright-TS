@@ -1,6 +1,5 @@
 import { test, expect, Locator, Page } from '@playwright/test';
 import { Base } from './BasePage';
-import { UserCredentials } from '../Utilities/UserCredentials';
 import { UserDetails } from '../Utilities/UserDetails';
 
 export class Sum extends Base {
