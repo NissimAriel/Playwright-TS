@@ -26,17 +26,17 @@ test.describe("Tests", () => {
       });
     });
 
-    test("Login with standard_user", async ({ page }) => {
+    test("Login with standard_user", async () => {
         await login.performLogin(process.env.STANDART_USER, process.env.CORRECT_PASSWORD);
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
 
-    test("Login with problem_user", async ({ page }) => {
+    test("Login with problem_user", async () => {
         await login.performLogin(process.env.PROBLEM_USER, process.env.CORRECT_PASSWORD);
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
 
-    test("Login with performance_glitch_user", async ({ page }) => {
+    test("Login with performance_glitch_user", async () => {
         await login.performLogin(process.env.PERFORMANCE_GLITCH_USER, process.env.CORRECT_PASSWORD); 
         await products.validateLoggedUrl(UserDetails.LOGGED_URL);
     });
