@@ -11,5 +11,3 @@ export class UserDetails {
 
 
 }
-
-module.exports = { UserDetails }
