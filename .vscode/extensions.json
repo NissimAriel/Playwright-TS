@@ -1,6 +1,7 @@
 {
     "recommendations": [
         "ms-playwright.playwright",
-        "formulahendry.code-runner"
+        "formulahendry.code-runner",
+        "vscode-icons-team.vscode-icons"
     ]
 }
