@@ -43,6 +43,7 @@ test.describe("Tests", () => {
     await page.screenshot({
       path: `screenshots/${testInfo.title}_${testInfo.status}.jpg`,
     });
+    await page.close();
   });
 
   test("Validate Login Test", async ({ page }) => {

@@ -21,6 +21,7 @@ test.describe("Tests", () => {
       await page.screenshot({
         path: `screenshots/${testInfo.title}_${testInfo.status}.jpg`,
       });
+      await page.close();
     });
 
     test("Login with locked_out_user", async ({ page }) => {
